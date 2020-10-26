@@ -1,10 +1,9 @@
-//https://www.geeksforgeeks.org/pinging-ip-address-java-set-2by-creating-sub-process/
 package pinger;
 
+//https://www.geeksforgeeks.org/pinging-ip-address-java-set-2by-creating-sub-process/
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
   
 public class Pinger 
 {  
@@ -34,17 +33,15 @@ public class Pinger
       
     public static void main(String args[]) throws Exception 
     {  
-        String ip;
-        try (Scanner scan = new Scanner(System.in)){
-            System.out.println("Enter an IP or a web address.");
-            ip = scan.nextLine();
-        }
-        // creating list for commands 
+        if (args.length != 1) {
+            System.out.println("Enter one IP or a web address as an argument");
+            System.exit(0);
+        } 
+
         ArrayList<String> commandList = new ArrayList<String>(); 
           
         commandList.add("ping"); 
-        // can be replaced by IP 
-        commandList.add(ip); 
+        commandList.add(args[0]); 
           
         Pinger.commands(commandList); 
     } 
